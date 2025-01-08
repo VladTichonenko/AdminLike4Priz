@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция для админов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #dba6f2, #a050d0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .title {
+            background: #fff;
+            color: #a050d0;
+            padding: 15px 30px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        .button {
+            background: #fff;
+            color: #a050d0;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .icon {
+            width: 70px;
+            height: 70px;
+            background: #fff;
+            color: #a050d0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            color: #333;
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-content h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            color: #a050d0;
+        }
+        .modal-content .important {
+            color: red;
+            font-weight: bold;
+        }
+        .modal-content .divider {
+            margin: 20px 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Инструкция для админов</div>
+
+        <div class="button" onclick="openModal('modal-how-to-use')">Как пользоваться?</div>
+        <div class="button" onclick="openModal('modal-points')">За что дают баллы?</div>
+        <div class="icon-container">
+            <div class="icon" onclick="window.open('https://t.me/Zakalve', '_blank')">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="icon" onclick="window.open('https://t.me/like4prize', '_blank')">
+                <i class="fab fa-telegram-plane"></i>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Modal How to Use -->
+    <div class="modal" id="modal-how-to-use" onclick="closeModal(event, 'modal-how-to-use')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2>Как пользоваться?</h2>
+            <p>1) Убедитесь, что ваш канал добавлен в систему, это можно сделать, нажав в боте <code>/start</code> или посмотреть в ТМА в разделе "Больше баллов".</p>
+            <p>2) Если ваш канал есть в системе, значит ваши подписчики уже получают баллы за свои действия. Пора бы их за это вознаградить.</p>
+            <p>3) Чтобы добавить приз, воспользуйтесь командой <code>/priz</code>.</p>
+            <p class="important">!!!Важно, если вы начали добавлять приз завершите процесс.</p>
+            <div class="divider"></div>
+            <p>Что-то пошло не так?</p>
+            <p>Если вы неправильно добавили приз или у вас возникла ошибка в процессе работы, пожалуйста, обратитесь к <a href="https://t.me/Zakalve" target="_blank">@Zakalve</a>.</p>
+        </div>
+    </div>
+
+    <!-- Modal Points -->
+    <div class="modal" id="modal-points" onclick="closeModal(event, 'modal-points')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2>За что дают баллы?</h2>
+            <p>Правила:</p>
+            <ul>
+                <li>Реакция: +5</li>
+                <li>Комментарий: +15</li>
+                <li>Реферальная программа: +20</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(event, id) {
+            if (event.target.id === id) {
+                document.getElementById(id).style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
